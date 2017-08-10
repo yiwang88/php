@@ -30,7 +30,8 @@ RUN apt-get update \
     && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install gd \
          mysqli \
-         opcache \
+
+opcache \
          pdo \
          pdo_mysql \
          pdo_pgsql \
@@ -47,6 +48,11 @@ RUN apt-get update \
     && docker-php-ext-enable imagick
     
     # install sqlsrv extension
+    RUN \
+    curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    curl https://packages.microsoft.com/config/ubuntu/15.10/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    exit 
+    
     RUN \
     apt-get update \
     && ACCEPT_EULA=Y apt-get install msodbcsql mssql-tools \
