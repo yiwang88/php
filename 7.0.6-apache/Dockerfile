@@ -43,6 +43,7 @@ RUN apt-get update \
          bcmath \
          mbstring \
          pcntl \
+         soap \
     && docker-php-ext-enable imagick
 
 RUN   \
