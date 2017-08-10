@@ -45,6 +45,15 @@ RUN apt-get update \
          pcntl \
          soap \
     && docker-php-ext-enable imagick
+    
+    # install sqlsrv extension
+    RUN \
+    ACCEPT_EULA=Y apt-get install msodbcsql mssql-tools \
+    && apt-get install unixodbc-dev \
+    && pear config-set php_ini `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` system \
+    && pecl install sqlsrv \
+    && pecl install pdo_sqlsrv
+    
 
 RUN   \
    rm -f /var/log/apache2/* \
