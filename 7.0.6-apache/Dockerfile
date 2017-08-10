@@ -20,7 +20,8 @@ RUN apt-get update \
          libgmp-dev \
          libmagickwand-dev \
          openssh-server vim curl wget tcptraceroute \
-    && chmod 755 /bin/init_container.sh \
+
+&& chmod 755 /bin/init_container.sh \
     && echo "root:Docker!" | chpasswd \
     && ln -s /usr/lib/x86_64-linux-gnu/libldap.so /usr/lib/libldap.so \
     && ln -s /usr/lib/x86_64-linux-gnu/liblber.so /usr/lib/liblber.so \
@@ -48,6 +49,7 @@ opcache \
     && docker-php-ext-enable imagick
     
     # install sqlsrv extension
+    
     RUN \
     curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
     && curl https://packages.microsoft.com/config/ubuntu/15.10/prod.list > /etc/apt/sources.list.d/mssql-release.list \
@@ -55,6 +57,7 @@ opcache \
     
     RUN \
     apt-get update \
+    && apt-get install apt-transport-https \
     && ACCEPT_EULA=Y apt-get install msodbcsql mssql-tools \
     && apt-get install unixodbc-dev \
     && pear config-set php_ini `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` system \
