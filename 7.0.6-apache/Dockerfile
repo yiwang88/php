@@ -57,7 +57,7 @@ opcache \
     
     RUN \
     apt-get update \
-    && apt-get install apt-transport-https \
+    && apt-get install apt-transport-https ca-certificates \
     && ACCEPT_EULA=Y apt-get install msodbcsql mssql-tools \
     && apt-get install unixodbc-dev \
     && pear config-set php_ini `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` system \
