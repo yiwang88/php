@@ -48,7 +48,8 @@ RUN apt-get update \
     
     # install sqlsrv extension
     RUN \
-    ACCEPT_EULA=Y apt-get install msodbcsql mssql-tools \
+    apt-get update \
+    && ACCEPT_EULA=Y apt-get install msodbcsql mssql-tools \
     && apt-get install unixodbc-dev \
     && pear config-set php_ini `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` system \
     && pecl install sqlsrv \
