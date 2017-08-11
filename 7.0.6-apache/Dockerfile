@@ -51,7 +51,7 @@ opcache \
     # install sqlsrv extension
     RUN \
        apt-get update \
-    && apt-get install apt-transport-https 
+    && apt-get install -y --no-install-recommends apt-transport-https 
     
     RUN \
        curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
