@@ -49,21 +49,21 @@ opcache \
     && docker-php-ext-enable imagick
     
     # install sqlsrv extension
-    RUN \
-       apt-get update \
-    && apt-get install -y --no-install-recommends apt-transport-https 
+   # RUN \
+    #   apt-get update \
+    # && apt-get install -y --no-install-recommends apt-transport-https 
+    #
+    # RUN \
+    #   curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    # && curl https://packages.microsoft.com/config/ubuntu/15.10/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+    # && exit 
     
-    RUN \
-       curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
-    && curl https://packages.microsoft.com/config/ubuntu/15.10/prod.list > /etc/apt/sources.list.d/mssql-release.list \
-    && exit 
-    
-    RUN \
-       ACCEPT_EULA=Y apt-get install msodbcsql mssql-tools \
-    && apt-get install unixodbc-dev \
-    && pear config-set php_ini `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` system \
-    && pecl install sqlsrv \
-    && pecl install pdo_sqlsrv
+    # RUN \
+     #  ACCEPT_EULA=Y apt-get install msodbcsql mssql-tools \
+    # && apt-get install unixodbc-dev \
+    # && pear config-set php_ini `php --ini | grep "Loaded Configuration" | sed -e "s|.*:\s*||"` system \
+    # && pecl install sqlsrv \
+    # && pecl install pdo_sqlsrv
     
 
 RUN   \
