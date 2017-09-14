@@ -45,6 +45,7 @@ opcache \
          bcmath \
          mbstring \
          pcntl \
+         soap \
          
     && docker-php-ext-enable imagick
     
